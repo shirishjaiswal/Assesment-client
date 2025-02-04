@@ -1,7 +1,6 @@
-import React from "react";
+import React, { memo } from "react";
 
-const Card = ({ item }) => {
-  return (
+const Card = memo(({ item }) => {  return (
     <div className="bg-white shadow-lg rounded-lg overflow-hidden min-w-[200px] flex-shrink-0 m-2">
       <div className="p-4">
         <h1 className="text-3xl font-bold p-2">{item.numberOfValues}</h1>
@@ -9,6 +8,6 @@ const Card = ({ item }) => {
       </div>
     </div>
   );
-}
+})
 
 export default Card;

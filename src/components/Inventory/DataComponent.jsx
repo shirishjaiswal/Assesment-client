@@ -36,7 +36,7 @@ console.log(endpoint);
 
     const fetchData = async () => {
       try {
-        const response = await fetch(endpoint);
+        const response = await fetch(endpoint, { signal: AbortController.signal });
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
