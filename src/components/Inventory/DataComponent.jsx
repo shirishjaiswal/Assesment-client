@@ -95,7 +95,7 @@ console.log(endpoint);
 
   const handleFilterChange = (newFilters) => {
     setFilters(newFilters);
-    localStorage.setItem("filters", JSON.stringify(newFilters)); // Save filters to localStorage
+    localStorage.setItem("filters", JSON.stringify(newFilters));
     filterData(newFilters);
   };
 
