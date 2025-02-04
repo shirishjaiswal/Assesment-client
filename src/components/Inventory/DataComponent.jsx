@@ -11,6 +11,8 @@ const defaultCardData = [
   { numberOfValues: 0, title: "cpo" },
 ];
 
+const endpoint = process.env.REACT_APP_SERVER_ENDPOINT;
+
 const DataComponent = () => {
   const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
@@ -23,6 +25,8 @@ const DataComponent = () => {
   const [showFilter, setShowFilter] = useState(false);
   const [cardData, setCardData] = useState(defaultCardData);
 
+console.log(endpoint);
+
   useEffect(() => {
     const savedFilters = JSON.parse(localStorage.getItem("filters"));
     if (savedFilters) {
@@ -32,7 +36,7 @@ const DataComponent = () => {
 
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:5000/api/inventory");
+        const response = await fetch(endpoint);
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
@@ -100,7 +104,7 @@ const DataComponent = () => {
   };
 
   if (loading) return <div>Loading...</div>;
-  if (error) return <div>{error}</div>;
+  if (error) return <div>{error} {process.env.SERVER_ENDPOINT}</div>;
   return (
     <div className="p-8 max-w-full mx-auto">
       <h1 className="text-3xl font-semibold text-gray-800 mb-6">
